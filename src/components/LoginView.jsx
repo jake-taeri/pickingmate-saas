@@ -147,7 +147,7 @@ export default function LoginView() {
               {loading ? '로그인 중...' : '로그인'}
             </button>
 
-            <div style={{ textAlign: 'center', paddingTop: '1rem', borderTop: '1px solid rgba(255, 255, 255, 0.2)' }}>
+            <div style={{ textAlign: 'center', paddingTop: '1.5rem', borderTop: '1px solid rgba(255, 255, 255, 0.2)' }}>
               <span style={{ color: '#bfdbfe' }}>아직 계정이 없으신가요? </span>
               <button
                 type="button"
