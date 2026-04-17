@@ -7,8 +7,8 @@ compatibility_flags = ["nodejs_compat"]
 # 새 KV 생성: wrangler kv:namespace create PICKINGMATE_KV
 # 생성 후 아래 id를 출력된 값으로 교체
 [[kv_namespaces]]
-binding = "KV"
-id = "REPLACE_WITH_YOUR_KV_NAMESPACE_ID"
+binding = "PICKINGMATE_KV"
+id = "ed4f091777ea4b1eb7f14105d0fb7785"
 
 # 아래 시크릿은 배포 후 다음 명령으로 설정:
 #   wrangler secret put CAFE24_CLIENT_ID      (카페24 앱스토어 Client ID)
