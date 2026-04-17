@@ -36,8 +36,8 @@ const CORS = {
   'Access-Control-Max-Age': '86400',
 };
 
-// 아이솔레이트 내 동시 갱신 중복 방지 (같은 Worker 인스턴스)
-let _refreshPromise = null;
+// 아이솔레이트 내 동시 갱신 중복 방지 (mall ID별)
+const _refreshPromises = {};
 
 function corsResponse(body = null, status = 204, extra = {}) {
   return new Response(body, { status, headers: { ...CORS, ...extra } });
@@ -53,9 +53,6 @@ function jsonResponse(data, status = 200) {
 // ──────────────────────────────────────────
 // 토큰 관리 (mall ID별 멀티테넌트)
 // ──────────────────────────────────────────
-
-// 아이솔레이트 내 동시 갱신 중복 방지 (mall ID별)
-const _refreshPromises = {};
 
 async function loadTokens(env, mallId) {
   if (env.KV) {
