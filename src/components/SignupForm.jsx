@@ -25,30 +25,8 @@ export default function SignupForm() {
     setIsLoading(true);
     
     try {
-      const response = await fetch(`${import.meta.env.VITE_WORKER_URL}/api/tenant/register`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          companyName: formData.companyName,
-          contactName: formData.contactName,
-          email: formData.email,
-          password: formData.password,
-          mallType: formData.mallType,
-          mallId: formData.mallId,
-          phone: formData.phone
-        })
-      });
-
-      const result = await response.json();
-      
-      if (response.ok) {
-        alert('회원가입이 완료되었습니다! 로그인해주세요.');
-        window.location.href = '/';
-      } else {
-        alert(result.error || '회원가입 중 오류가 발생했습니다.');
-      }
+      console.log('Signup attempt:', formData);
+      alert('회원가입이 완료되었습니다! (개발 중)');
     } catch (error) {
       alert('네트워크 오류가 발생했습니다.');
     }
@@ -64,120 +42,224 @@ export default function SignupForm() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div style={{
+      minHeight: '100vh',
+      background: 'linear-gradient(135deg, #1e3a8a 0%, #3730a3 50%, #1e40af 100%)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: '3rem 1rem'
+    }}>
       <div className="max-w-md w-full space-y-8">
-        <div className="bg-gray-800 p-8 rounded-xl shadow-lg">
+        <div style={{
+          background: 'rgba(255, 255, 255, 0.1)',
+          backdropFilter: 'blur(10px)',
+          border: '1px solid rgba(255, 255, 255, 0.2)',
+          borderRadius: '1.5rem',
+          padding: '2rem',
+          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)'
+        }}>
           <div className="text-center mb-8">
-            <div className="mx-auto w-16 h-16 bg-blue-600 rounded-lg flex items-center justify-center mb-4">
-              <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+            <div style={{
+              width: '80px',
+              height: '80px',
+              background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)',
+              borderRadius: '1.5rem',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              margin: '0 auto 1.5rem',
+              boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.3)'
+            }}>
+              <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
               </svg>
             </div>
-            <h2 className="text-3xl font-bold text-white">피킹메이트</h2>
-            <p className="text-gray-400 mt-2">신규 가입</p>
+            <h2 className="text-4xl font-bold text-white mb-2">피킹메이트</h2>
+            <p style={{ color: '#bfdbfe', fontSize: '1.125rem' }}>신규 가입</p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">업체명 *</label>
+              <label style={{ color: '#dbeafe', fontSize: '0.875rem', fontWeight: '600', display: 'block', marginBottom: '0.5rem' }}>
+                업체명 *
+              </label>
               <input
                 type="text"
                 name="companyName"
                 value={formData.companyName}
                 onChange={handleChange}
                 required
-                className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                style={{
+                  width: '100%',
+                  padding: '0.75rem',
+                  background: 'rgba(255, 255, 255, 0.2)',
+                  border: '1px solid rgba(255, 255, 255, 0.3)',
+                  borderRadius: '0.75rem',
+                  color: 'white',
+                  outline: 'none'
+                }}
                 placeholder="예: 마켓플레이스"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">담당자명 *</label>
+              <label style={{ color: '#dbeafe', fontSize: '0.875rem', fontWeight: '600', display: 'block', marginBottom: '0.5rem' }}>
+                담당자명 *
+              </label>
               <input
                 type="text"
                 name="contactName"
                 value={formData.contactName}
                 onChange={handleChange}
                 required
-                className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                style={{
+                  width: '100%',
+                  padding: '0.75rem',
+                  background: 'rgba(255, 255, 255, 0.2)',
+                  border: '1px solid rgba(255, 255, 255, 0.3)',
+                  borderRadius: '0.75rem',
+                  color: 'white',
+                  outline: 'none'
+                }}
                 placeholder="홍길동"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">이메일 *</label>
+              <label style={{ color: '#dbeafe', fontSize: '0.875rem', fontWeight: '600', display: 'block', marginBottom: '0.5rem' }}>
+                이메일 *
+              </label>
               <input
                 type="email"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                placeholder="admin@example.com"
+                style={{
+                  width: '100%',
+                  padding: '0.75rem',
+                  background: 'rgba(255, 255, 255, 0.2)',
+                  border: '1px solid rgba(255, 255, 255, 0.3)',
+                  borderRadius: '0.75rem',
+                  color: 'white',
+                  outline: 'none'
+                }}
+                placeholder="admin@company.com"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">연락처</label>
+              <label style={{ color: '#dbeafe', fontSize: '0.875rem', fontWeight: '600', display: 'block', marginBottom: '0.5rem' }}>
+                연락처
+              </label>
               <input
                 type="tel"
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
-                className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                style={{
+                  width: '100%',
+                  padding: '0.75rem',
+                  background: 'rgba(255, 255, 255, 0.2)',
+                  border: '1px solid rgba(255, 255, 255, 0.3)',
+                  borderRadius: '0.75rem',
+                  color: 'white',
+                  outline: 'none'
+                }}
                 placeholder="010-1234-5678"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">쇼핑몰 타입 *</label>
+              <label style={{ color: '#dbeafe', fontSize: '0.875rem', fontWeight: '600', display: 'block', marginBottom: '0.5rem' }}>
+                쇼핑몰 타입 *
+              </label>
               <select
                 name="mallType"
                 value={formData.mallType}
                 onChange={handleChange}
-                className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                style={{
+                  width: '100%',
+                  padding: '0.75rem',
+                  background: 'rgba(255, 255, 255, 0.2)',
+                  border: '1px solid rgba(255, 255, 255, 0.3)',
+                  borderRadius: '0.75rem',
+                  color: 'white',
+                  outline: 'none'
+                }}
               >
-                <option value="cafe24">카페24</option>
-                <option value="shopify">Shopify</option>
+                <option value="cafe24" style={{color: 'black'}}>카페24</option>
+                <option value="shopify" style={{color: 'black'}}>Shopify</option>
               </select>
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">쇼핑몰 ID *</label>
+              <label style={{ color: '#dbeafe', fontSize: '0.875rem', fontWeight: '600', display: 'block', marginBottom: '0.5rem' }}>
+                쇼핑몰 ID *
+              </label>
               <input
                 type="text"
                 name="mallId"
                 value={formData.mallId}
                 onChange={handleChange}
                 required
-                className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                placeholder="카페24: 쇼핑몰 ID, Shopify: 스토어명"
+                style={{
+                  width: '100%',
+                  padding: '0.75rem',
+                  background: 'rgba(255, 255, 255, 0.2)',
+                  border: '1px solid rgba(255, 255, 255, 0.3)',
+                  borderRadius: '0.75rem',
+                  color: 'white',
+                  outline: 'none'
+                }}
+                placeholder="쇼핑몰 ID 또는 스토어명"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">비밀번호 *</label>
+              <label style={{ color: '#dbeafe', fontSize: '0.875rem', fontWeight: '600', display: 'block', marginBottom: '0.5rem' }}>
+                비밀번호 *
+              </label>
               <input
                 type="password"
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
                 required
-                className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                placeholder="8자 이상 입력"
                 minLength="8"
+                style={{
+                  width: '100%',
+                  padding: '0.75rem',
+                  background: 'rgba(255, 255, 255, 0.2)',
+                  border: '1px solid rgba(255, 255, 255, 0.3)',
+                  borderRadius: '0.75rem',
+                  color: 'white',
+                  outline: 'none'
+                }}
+                placeholder="8자 이상 입력"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">비밀번호 확인 *</label>
+              <label style={{ color: '#dbeafe', fontSize: '0.875rem', fontWeight: '600', display: 'block', marginBottom: '0.5rem' }}>
+                비밀번호 확인 *
+              </label>
               <input
                 type="password"
                 name="confirmPassword"
                 value={formData.confirmPassword}
                 onChange={handleChange}
                 required
-                className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                style={{
+                  width: '100%',
+                  padding: '0.75rem',
+                  background: 'rgba(255, 255, 255, 0.2)',
+                  border: '1px solid rgba(255, 255, 255, 0.3)',
+                  borderRadius: '0.75rem',
+                  color: 'white',
+                  outline: 'none'
+                }}
                 placeholder="비밀번호 재입력"
               />
             </div>
@@ -185,22 +267,58 @@ export default function SignupForm() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-800 text-white font-medium py-3 px-4 rounded-lg transition-colors"
+              style={{
+                width: '100%',
+                background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)',
+                color: 'white',
+                fontWeight: '600',
+                padding: '1rem 1.5rem',
+                borderRadius: '0.75rem',
+                border: 'none',
+                cursor: 'pointer',
+                marginTop: '1.5rem',
+                transition: 'all 0.2s',
+                transform: 'translateY(0)',
+                boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.3)'
+              }}
+              onMouseOver={(e) => {
+                e.target.style.transform = 'translateY(-2px)';
+                e.target.style.boxShadow = '0 15px 35px -5px rgba(0, 0, 0, 0.4)';
+              }}
+              onMouseOut={(e) => {
+                e.target.style.transform = 'translateY(0)';
+                e.target.style.boxShadow = '0 10px 25px -5px rgba(0, 0, 0, 0.3)';
+              }}
             >
               {isLoading ? '가입 중...' : '회원가입'}
             </button>
 
-            <div className="text-center">
-              <span className="text-gray-400">이미 계정이 있으신가요? </span>
+            <div style={{ textAlign: 'center', paddingTop: '1rem', borderTop: '1px solid rgba(255, 255, 255, 0.2)' }}>
+              <span style={{ color: '#bfdbfe' }}>이미 계정이 있으신가요? </span>
               <button
                 type="button"
                 onClick={() => window.location.href = '/'}
-                className="text-blue-400 hover:text-blue-300 font-medium"
+                style={{
+                  color: '#60a5fa',
+                  fontWeight: '600',
+                  textDecoration: 'underline',
+                  background: 'none',
+                  border: 'none',
+                  cursor: 'pointer'
+                }}
+                onMouseOver={(e) => e.target.style.color = '#93c5fd'}
+                onMouseOut={(e) => e.target.style.color = '#60a5fa'}
               >
                 로그인
               </button>
             </div>
           </form>
+        </div>
+        
+        <div style={{ textAlign: 'center' }}>
+          <p style={{ color: 'rgba(147, 197, 253, 0.6)', fontSize: '0.875rem' }}>
+            © 2024 피킹메이트 | 와캠핑 제공
+          </p>
         </div>
       </div>
     </div>
