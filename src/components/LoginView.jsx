@@ -164,7 +164,7 @@ export default function LoginView() {
                 transition: 'all 0.2s',
                 transform: 'translateY(0)',
                 boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.3)',
-                marginTop: '2rem',
+                marginTop: '2.5rem',
                 fontSize: '1rem'
               }}
               onMouseOver={(e) => {
@@ -184,7 +184,7 @@ export default function LoginView() {
               textAlign: 'center', 
               paddingTop: '2rem', 
               borderTop: '1px solid rgba(255, 255, 255, 0.2)',
-              marginTop: '2rem'
+              marginTop: '2.5rem'
             }}>
               <span style={{ color: '#bfdbfe' }}>아직 계정이 없으신가요? </span>
               <button
