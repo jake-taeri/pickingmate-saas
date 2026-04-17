@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm -v)",
+      "Bash(npm install:*)",
+      "Bash(npm run:*)",
+      "Bash(node:*)",
+      "Bash(npx wrangler:*)",
+      "Bash(npx vercel:*)",
+      "Bash(npm start:*)",
+      "Bash(vercel --version)",
+      "Bash(echo \"exit:$?\")",
+      "Bash(vercel:*)",
+      "Bash(wrangler deploy:*)",
+      "Bash(wrangler secret:*)",
+      "Bash(curl *)"
+    ]
+  }
+}

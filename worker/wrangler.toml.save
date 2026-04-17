@@ -1,0 +1,19 @@
+name = "pickingmate-proxy"
+main = "index.js"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+
+# KV 네임스페이스 바인딩 (wrangler kv:namespace create PICKINGMATE_KV 로 생성 후 id 입력)
+[[kv_namespaces]]
+binding = "KV"
+id = "2d3089733c9145d6a8cf1ba4ff8ad98c"
+
+# 공개 환경변수 (시크릿은 wrangler secret put 으로 설정)
+[vars]
+CAFE24_CLIENT_ID = "f3SgOWeheIztEojlP0TMHS"
+
+# 아래 시크릿은 배포 후 다음 명령으로 설정:
+#   wrangler secret put CAFE24_CLIENT_SECRET
+#   wrangler secret put CAFE24_ACCESS_TOKEN
+#   wrangler secret put CAFE24_REFRESH_TOKEN
+#   wrangler secret put CLAUDE_API_KEY
