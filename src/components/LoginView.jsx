@@ -60,7 +60,13 @@ export default function LoginView() {
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label style={{ color: '#dbeafe', fontSize: '0.875rem', fontWeight: '600', display: 'block', marginBottom: '0.75rem' }}>
+              <label style={{ 
+                color: '#dbeafe', 
+                fontSize: '0.875rem', 
+                fontWeight: '600', 
+                display: 'block', 
+                marginBottom: '0.75rem' 
+              }}>
                 이메일
               </label>
               <input
@@ -70,21 +76,36 @@ export default function LoginView() {
                 style={{
                   width: '100%',
                   padding: '0.75rem 1rem',
-                  background: 'rgba(255, 255, 255, 0.2)',
-                  border: '1px solid rgba(255, 255, 255, 0.3)',
+                  background: 'rgba(255, 255, 255, 0.25)',
+                  border: '1px solid rgba(255, 255, 255, 0.4)',
                   borderRadius: '0.75rem',
                   color: 'white',
                   outline: 'none',
-                  transition: 'all 0.2s'
+                  transition: 'all 0.2s',
+                  fontSize: '1rem'
                 }}
                 placeholder="admin@pickingmate.com"
                 required
                 disabled={loading}
+                onFocus={(e) => {
+                  e.target.style.background = 'rgba(255, 255, 255, 0.3)';
+                  e.target.style.border = '1px solid rgba(255, 255, 255, 0.6)';
+                }}
+                onBlur={(e) => {
+                  e.target.style.background = 'rgba(255, 255, 255, 0.25)';
+                  e.target.style.border = '1px solid rgba(255, 255, 255, 0.4)';
+                }}
               />
             </div>
 
-            <div>
-              <label style={{ color: '#dbeafe', fontSize: '0.875rem', fontWeight: '600', display: 'block', marginBottom: '0.75rem' }}>
+            <div style={{ marginTop: '1.5rem' }}>
+              <label style={{ 
+                color: '#dbeafe', 
+                fontSize: '0.875rem', 
+                fontWeight: '600', 
+                display: 'block', 
+                marginBottom: '0.75rem' 
+              }}>
                 비밀번호
               </label>
               <input
@@ -94,16 +115,25 @@ export default function LoginView() {
                 style={{
                   width: '100%',
                   padding: '0.75rem 1rem',
-                  background: 'rgba(255, 255, 255, 0.2)',
-                  border: '1px solid rgba(255, 255, 255, 0.3)',
+                  background: 'rgba(255, 255, 255, 0.25)',
+                  border: '1px solid rgba(255, 255, 255, 0.4)',
                   borderRadius: '0.75rem',
                   color: 'white',
                   outline: 'none',
-                  transition: 'all 0.2s'
+                  transition: 'all 0.2s',
+                  fontSize: '1rem'
                 }}
-                placeholder="••••••••"
+                placeholder="비밀번호를 입력하세요"
                 required
                 disabled={loading}
+                onFocus={(e) => {
+                  e.target.style.background = 'rgba(255, 255, 255, 0.3)';
+                  e.target.style.border = '1px solid rgba(255, 255, 255, 0.6)';
+                }}
+                onBlur={(e) => {
+                  e.target.style.background = 'rgba(255, 255, 255, 0.25)';
+                  e.target.style.border = '1px solid rgba(255, 255, 255, 0.4)';
+                }}
               />
             </div>
 
@@ -113,7 +143,8 @@ export default function LoginView() {
                 border: '1px solid rgba(239, 68, 68, 0.5)',
                 color: '#fecaca',
                 padding: '0.75rem 1rem',
-                borderRadius: '0.75rem'
+                borderRadius: '0.75rem',
+                marginTop: '1rem'
               }}>
                 {error}
               </div>
@@ -132,7 +163,9 @@ export default function LoginView() {
                 cursor: 'pointer',
                 transition: 'all 0.2s',
                 transform: 'translateY(0)',
-                boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.3)'
+                boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.3)',
+                marginTop: '2rem',
+                fontSize: '1rem'
               }}
               onMouseOver={(e) => {
                 e.target.style.transform = 'translateY(-2px)';
@@ -147,7 +180,12 @@ export default function LoginView() {
               {loading ? '로그인 중...' : '로그인'}
             </button>
 
-            <div style={{ textAlign: 'center', paddingTop: '1.5rem', borderTop: '1px solid rgba(255, 255, 255, 0.2)' }}>
+            <div style={{ 
+              textAlign: 'center', 
+              paddingTop: '2rem', 
+              borderTop: '1px solid rgba(255, 255, 255, 0.2)',
+              marginTop: '2rem'
+            }}>
               <span style={{ color: '#bfdbfe' }}>아직 계정이 없으신가요? </span>
               <button
                 type="button"
